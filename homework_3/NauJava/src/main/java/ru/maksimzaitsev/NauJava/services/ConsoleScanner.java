@@ -1,3 +1,4 @@
+/*
 package ru.maksimzaitsev.NauJava.services;
 
 import jakarta.annotation.PostConstruct;
@@ -32,3 +33,4 @@ public class ConsoleScanner {
         };
     }
 }
+*/
