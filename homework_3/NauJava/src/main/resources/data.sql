@@ -2,6 +2,7 @@ DELETE FROM encrypted_passwords;
 DELETE FROM generated_passwords;
 DELETE FROM encryption_algorithms;
 DELETE FROM generation_algorithms;
+DELETE FROM users;
 
 INSERT INTO encryption_algorithms (id, name, key_length, description)
 VALUES (1, 'SHA-256', 256, 'Secure Hash Algorithm 256-bit');
@@ -20,3 +21,17 @@ VALUES
 (1, 'a1b2c3d4e5f6sha256hash', 1, 'SHA-256', 1, 1),
 (2, 'fedcba987654sha256hash', 1, 'SHA-256', 2, 1),
 (3, '1234567890abcdefsha256', 1, 'SHA-256', 3, 1);
+
+CREATE TABLE IF NOT EXISTS users (
+    id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    role VARCHAR(20) DEFAULT 'USER' NOT NULL
+);
+
+INSERT INTO users (username, password, role) VALUES
+('user', '$2a$12$4rPumxnIO8xoJOpQeyC0HuGXz9Ls/ONt3lB9MmwKAxkRUmXDR6Svu', 'USER'),
+('admin', '$2a$12$4rPumxnIO8xoJOpQeyC0HuGXz9Ls/ONt3lB9MmwKAxkRUmXDR6Svu', 'ADMIN');
