@@ -1,9 +1,9 @@
-    package ru.maksimzaitsev.NauJava.dao;
+package ru.maksimzaitsev.NauJava.dao;
 
-    import ru.maksimzaitsev.NauJava.dbEntities.EncryptedPassword;
+import ru.maksimzaitsev.NauJava.dbEntities.EncryptedPassword;
 
-    import java.util.List;
+import java.util.List;
 
-    public interface EncryptedPasswordRepositoryCustom {
-        List<EncryptedPassword> findByEncryptionAlgorithmName(String algorithmName);
-    }
+public interface EncryptedPasswordRepositoryCustom {
+    List<EncryptedPassword> findByEncryptionAlgorithmName(String algorithmName);
+}
