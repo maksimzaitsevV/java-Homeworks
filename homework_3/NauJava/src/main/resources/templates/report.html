@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Статистика</title>
+</head>
+<body>
+<h1>Отчет</h1>
+
+<p><strong>Количество пользователей:</strong> <span th:text="${userCount}"></span></p>
+<p><strong>Время поиска пользователей:</strong> <span th:text="${userCalculationTime}"></span> мс</p>
+<p><strong>Время создания таблицы:</strong> <span th:text="${passwordCalculationTime}"></span> мс</p>
+<p><strong>Общее время:</strong> <span th:text="${totalTime}"></span> мс</p>
+
+<h2>Список паролей</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>EncryptedContent</th>
+        <th>Algorithm</th>
+        <th>Iterations</th>
+        <th>hashType</th>
+    </tr>
+    <tr th:each="password : ${encryptedPasswords}">
+        <td th:text="${password.id}"></td>
+        <td th:text="${password.encryptedContent}"></td>
+        <td th:text="${password.encryptionAlgorithm?.name}"></td>
+        <td th:text="${password.iterations}"></td>
+        <td th:text="${password.hashType}"></td>
+    </tr>
+</table>
+</body>
+</html>

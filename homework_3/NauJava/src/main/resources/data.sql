@@ -3,6 +3,7 @@ DELETE FROM generated_passwords;
 DELETE FROM encryption_algorithms;
 DELETE FROM generation_algorithms;
 DELETE FROM users;
+DELETE FROM reports;
 
 INSERT INTO encryption_algorithms (id, name, key_length, description)
 VALUES (1, 'SHA-256', 256, 'Secure Hash Algorithm 256-bit');
@@ -31,6 +32,14 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(50),
     role VARCHAR(20) DEFAULT 'USER' NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS reports (
+    id BIGSERIAL PRIMARY KEY,
+    status VARCHAR(20) NOT NULL,
+    content TEXT
+);
+
+
 
 INSERT INTO users (username, password, role) VALUES
 ('user', '$2a$12$4rPumxnIO8xoJOpQeyC0HuGXz9Ls/ONt3lB9MmwKAxkRUmXDR6Svu', 'USER'),
